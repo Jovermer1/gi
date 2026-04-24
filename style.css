@@ -1,0 +1,216 @@
+:root {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --accent: #f59e0b;
+    --text: #f1f5f9;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: 0.3s;
+}
+
+/* Навигация */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10%;
+    background: rgba(15, 23, 42, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { font-size: 1.5rem; font-weight: 800; }
+.logo span { color: var(--accent); }
+
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text); transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+/* Hero секция */
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle, rgba(30,41,59,1) 0%, rgba(15,23,42,1) 100%);
+}
+
+.hero-content h1 { font-size: 4rem; margin-bottom: 1rem; }
+
+/* Кнопки */
+.btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.primary { background: var(--accent); color: #000; }
+.secondary { border: 2px solid var(--accent); color: var(--accent); margin-left: 15px; }
+.btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+/* Сетка и карточки */
+.content-section { padding: 80px 10%; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 40px; }
+.card { background: var(--card-bg); padding: 30px; border-radius: 15px; border-bottom: 4px solid var(--accent); }
+
+/* Калькулятор */
+.calculator-container { padding: 100px 10%; text-align: center; }
+.styled-input { padding: 10px; border-radius: 5px; width: 250px; margin-bottom: 20px; font-size: 1rem; }
+.result-box { margin-top: 30px; font-size: 1.5rem; color: var(--accent); min-height: 50px; }
+
+
+/* Переменные для ТЕМНОЙ темы */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f1f5f9;
+    --accent: #f59e0b;
+    --nav-bg: rgba(15, 23, 42, 0.9);
+}
+
+/* Переменные для СВЕТЛОЙ темы */
+body.light-theme {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #0f172a;
+    --accent: #ea580c;
+    --nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* Применяем переменные ко всей странице */
+body {
+    
+}
+
+/* Исправляем Hero-секцию (фон главного экрана) */
+.hero {
+    /* Удаляем фиксированный темный градиент, заменяем на переменную */
+    background: radial-gradient(circle, var(--card-bg) 0%, var(--bg-color) 100%) !important;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Принудительно перекрашиваем все заголовки и текст */
+h1, h2, h3, p, span, li a {
+    color: var(--text-color) !important;
+}
+
+.navbar { 
+    background: var(--nav-bg) !important; 
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.theme-toggle {
+    background: var(--accent);
+    color: white !important;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Стиль для фото в результате калькулятора */
+.result-img {
+    width: 200px;         /* Ширина фото */
+    height: 200px;        /* Высота фото */
+    object-fit: cover;    /* Обрезает фото, чтобы оно было квадратным без искажений */
+    border-radius: 15px;  /* Скругленные углы */
+    margin-top: 20px;     /* Отступ сверху от текста */
+    border: 3px solid var(--accent); /* Рамка в цвет акцента сайта */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Легкая тень */
+}
+.result-img {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 1. Эффект размытия для карточек и навигации */
+.card, .navbar {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 2. Анимация появления при загрузке (для заголовков) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1, .content-section h2 {
+    animation: fadeInUp 1s ease-out;
+}
+
+/* 3. Кастомный курсор (только для ПК) */
+@media (min-width: 992px) {
+    body {
+        cursor: url('https://cursors-4u.net'), auto;
+    }
+    
+    /* Эффект свечения за курсором (опционально) */
+    .cursor-follower {
+        width: 40px;
+        height: 40px;
+        background: var(--accent);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        opacity: 0.15;
+        filter: blur(15px);
+        z-index: 9999;
+        transition: transform 0.1s ease-out;
+    }
+}
+
+/* 4. Красивый ховер-эффект для кнопок */
+.btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+
+
